@@ -164,3 +164,4 @@ C:\Users\micha\source\repos\Web API for Contacts 2.0\obj\Debug\net9.0\rjimswa.ds
 C:\Users\micha\source\repos\Web API for Contacts 2.0\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
 C:\Users\micha\source\repos\Web API for Contacts 2.0\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
 C:\Users\micha\source\repos\Web API for Contacts 2.0\obj\Debug\net9.0\staticwebassets.build.json.cache
+C:\Users\micha\source\repos\Web API for Contacts 2.0\obj\Debug\net9.0\Web API for Contacts 2.0.sourcelink.json

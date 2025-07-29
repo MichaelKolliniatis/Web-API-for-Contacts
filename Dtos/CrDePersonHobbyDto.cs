@@ -2,7 +2,7 @@
 
 namespace Web_API_for_Contacts_2._0.Dtos
 {
-    public class CreatePersonHobbyDto
+    public class CrDePersonHobbyDto
     {
 
         [Required(ErrorMessage = "Person id is required.")]

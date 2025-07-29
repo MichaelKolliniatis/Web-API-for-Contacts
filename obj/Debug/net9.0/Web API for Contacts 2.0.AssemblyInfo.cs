@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Web API for Contacts 2.0")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8b2ec3471934b0bfd8356d5672e6c4ee61683823")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a5d0f59a7acf87e094026b34f798214ea11af32b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Web API for Contacts 2.0")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Web API for Contacts 2.0")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

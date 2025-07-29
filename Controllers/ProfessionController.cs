@@ -21,8 +21,19 @@ namespace Web_API_for_Contacts_2._0.Controllers
             return Ok(await _context.Profession.ToListAsync());
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Profession>> GetProfessionById(int id)
+        {
+            var profession = await _context.Profession.FindAsync(id);
+
+            if (profession == null)
+                return NotFound(new { message = $"There is no profession with id {id}" });
+
+            return Ok(profession);
+        }
+
         [HttpPost]
-        public async Task<ActionResult<Country>> CreateProfession([FromBody] CreateProfessionDto newProfessionDto)
+        public async Task<ActionResult> CreateProfession([FromBody] CreateProfessionDto newProfessionDto)
         {
             if (!ModelState.IsValid)
             {
@@ -42,15 +53,15 @@ namespace Web_API_for_Contacts_2._0.Controllers
             _context.Profession.Add(newProfession);
             await _context.SaveChangesAsync();
 
-            return Ok(new { message = $"{newProfession.Name} added with id {newProfession.Id}." });
+            return CreatedAtAction(nameof(GetProfessionById), new {id = newProfession.Id}, newProfession);
         }
 
         [HttpDelete] 
         public async Task<IActionResult> DeleteProfession([FromBody] Profession professionToDelete)
         {
-            if (professionToDelete == null || professionToDelete.Id == 0 || string.IsNullOrWhiteSpace(professionToDelete.Name))
+            if (!ModelState.IsValid)
             {
-                return BadRequest(new { message = "Invalid Id or Name." });
+                return BadRequest(ModelState);
             }
 
             var profession = await _context.Profession

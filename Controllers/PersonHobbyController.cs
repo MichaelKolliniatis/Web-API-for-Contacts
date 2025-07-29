@@ -24,11 +24,28 @@ namespace Web_API_for_Contacts_2._0.Controllers
 
             var result = _mapper.Map<List<PersonHobbyDisplayDto>>(personHobbies);
             return Ok(result);
+        }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<List<PersonHobbyDisplayDto>>> GetPersonHobbyByPersonId(int id)
+        {
+            var personHobbies = await _context.PersonHobby
+                .Include(ph => ph.Person)
+                .Include(ph => ph.Hobby)
+                .Where(ph => ph.PersonId == id)
+                .ToListAsync();
+
+            if (personHobbies == null || personHobbies.Count == 0)
+            {
+                return NotFound($"No hobbies found for person with ID {id}.");
+            }
+
+            var result = _mapper.Map<List<PersonHobbyDisplayDto>>(personHobbies);
+            return Ok(result);
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddPersonHobby([FromBody] CreatePersonHobbyDto request)
+        public async Task<ActionResult> AddPersonHobby([FromBody] CrDePersonHobbyDto request)
         {
             if (!ModelState.IsValid)
             {
@@ -36,13 +53,12 @@ namespace Web_API_for_Contacts_2._0.Controllers
             }
 
             var person = await _context.Person.FindAsync(request.PersonId);
-
             if (person == null || person.FirstName != request.FirstName || person.LastName != request.LastName)
             {
                 return NotFound($"No person with id {request.PersonId} and name {request.FirstName} {request.LastName}.");
             }
 
-            var hobby = await _context.Hobby.FirstOrDefaultAsync(h => h.Name == request.HobbyName);
+            var hobby = await _context.Hobby.FirstOrDefaultAsync(h => h.Name.ToLower() == request.HobbyName.ToLower());
             if (hobby == null)
             {
                 hobby = new Hobby { Name = request.HobbyName };
@@ -67,30 +83,24 @@ namespace Web_API_for_Contacts_2._0.Controllers
             _context.PersonHobby.Add(personHobby);
             await _context.SaveChangesAsync();
 
-            return Ok($"Done! {person.FirstName} {person.LastName} likes {request.HobbyName}");
+            return CreatedAtAction(nameof(GetPersonHobbyByPersonId), new { id = person.Id }, $"{person.FirstName} {person.LastName} likes {request.HobbyName}");
         }
 
         [HttpDelete]
-        public async Task<ActionResult> DeletePersonHobby([FromBody] CreatePersonHobbyDto request)
+        public async Task<ActionResult> DeletePersonHobby([FromBody] CrDePersonHobbyDto request)
         {
             if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            if (string.IsNullOrWhiteSpace(request.FirstName) ||
-                string.IsNullOrWhiteSpace(request.LastName) ||
-                string.IsNullOrWhiteSpace(request.HobbyName))
             {
-                return BadRequest(new { message = "Please fill all the required fields." });
+                return BadRequest(ModelState);
             }
 
             var person = await _context.Person.FindAsync(request.PersonId);
-
             if (person == null || person.FirstName != request.FirstName || person.LastName != request.LastName)
             {
                 return NotFound($"No person with id {request.PersonId} and name {request.FirstName} {request.LastName}.");
             }
 
-            var hobby = await _context.Hobby.FirstOrDefaultAsync(h => h.Name == request.HobbyName);
+            var hobby = await _context.Hobby.FirstOrDefaultAsync(h => h.Name.ToLower() == request.HobbyName.ToLower());
             if (hobby == null)
             {
                 return NotFound("No such hobby found.");
@@ -107,7 +117,7 @@ namespace Web_API_for_Contacts_2._0.Controllers
             _context.PersonHobby.Remove(personHobby);
             await _context.SaveChangesAsync();
 
-            return Ok("Done.");
+            return Ok($"Done. {person.FirstName} {person.LastName} doesn't like {request.HobbyName} anymore");
         }
 
     }

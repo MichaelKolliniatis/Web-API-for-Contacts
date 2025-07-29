@@ -1,7 +1,32 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\micha\\source\\repos\\Web API for Contacts 2.0\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4CF102BA-BB5F-419E-8019-AD886E6BB425}|Web API for Contacts 2.0.csproj|c:\\users\\micha\\source\\repos\\web api for contacts 2.0\\controllers\\personcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CF102BA-BB5F-419E-8019-AD886E6BB425}|Web API for Contacts 2.0.csproj|solutionrelative:controllers\\personcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CF102BA-BB5F-419E-8019-AD886E6BB425}|Web API for Contacts 2.0.csproj|c:\\users\\micha\\source\\repos\\web api for contacts 2.0\\data\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CF102BA-BB5F-419E-8019-AD886E6BB425}|Web API for Contacts 2.0.csproj|solutionrelative:data\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CF102BA-BB5F-419E-8019-AD886E6BB425}|Web API for Contacts 2.0.csproj|c:\\users\\micha\\source\\repos\\web api for contacts 2.0\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CF102BA-BB5F-419E-8019-AD886E6BB425}|Web API for Contacts 2.0.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CF102BA-BB5F-419E-8019-AD886E6BB425}|Web API for Contacts 2.0.csproj|c:\\users\\micha\\source\\repos\\web api for contacts 2.0\\dtos\\cruppersondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CF102BA-BB5F-419E-8019-AD886E6BB425}|Web API for Contacts 2.0.csproj|solutionrelative:dtos\\cruppersondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CF102BA-BB5F-419E-8019-AD886E6BB425}|Web API for Contacts 2.0.csproj|c:\\users\\micha\\source\\repos\\web api for contacts 2.0\\dtos\\crdepersonhobbydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CF102BA-BB5F-419E-8019-AD886E6BB425}|Web API for Contacts 2.0.csproj|solutionrelative:dtos\\crdepersonhobbydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CF102BA-BB5F-419E-8019-AD886E6BB425}|Web API for Contacts 2.0.csproj|c:\\users\\micha\\source\\repos\\web api for contacts 2.0\\controllers\\countrycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CF102BA-BB5F-419E-8019-AD886E6BB425}|Web API for Contacts 2.0.csproj|solutionrelative:controllers\\countrycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -18,6 +43,80 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DbContext.cs",
+              "DocumentMoniker": "C:\\Users\\micha\\source\\repos\\Web API for Contacts 2.0\\Data\\DbContext.cs",
+              "RelativeDocumentMoniker": "Data\\DbContext.cs",
+              "ToolTip": "C:\\Users\\micha\\source\\repos\\Web API for Contacts 2.0\\Data\\DbContext.cs",
+              "RelativeToolTip": "Data\\DbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-06T15:50:32.89Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PersonController.cs",
+              "DocumentMoniker": "C:\\Users\\micha\\source\\repos\\Web API for Contacts 2.0\\Controllers\\PersonController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PersonController.cs",
+              "ToolTip": "C:\\Users\\micha\\source\\repos\\Web API for Contacts 2.0\\Controllers\\PersonController.cs",
+              "RelativeToolTip": "Controllers\\PersonController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAIwCIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-06T15:47:47.681Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\micha\\source\\repos\\Web API for Contacts 2.0\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\micha\\source\\repos\\Web API for Contacts 2.0\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-06T15:46:00.23Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CrUpPersonDto.cs",
+              "DocumentMoniker": "C:\\Users\\micha\\source\\repos\\Web API for Contacts 2.0\\Dtos\\CrUpPersonDto.cs",
+              "RelativeDocumentMoniker": "Dtos\\CrUpPersonDto.cs",
+              "ToolTip": "C:\\Users\\micha\\source\\repos\\Web API for Contacts 2.0\\Dtos\\CrUpPersonDto.cs",
+              "RelativeToolTip": "Dtos\\CrUpPersonDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-06T15:45:18.209Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CrDePersonHobbyDto.cs",
+              "DocumentMoniker": "C:\\Users\\micha\\source\\repos\\Web API for Contacts 2.0\\Dtos\\CrDePersonHobbyDto.cs",
+              "RelativeDocumentMoniker": "Dtos\\CrDePersonHobbyDto.cs",
+              "ToolTip": "C:\\Users\\micha\\source\\repos\\Web API for Contacts 2.0\\Dtos\\CrDePersonHobbyDto.cs",
+              "RelativeToolTip": "Dtos\\CrDePersonHobbyDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-06T15:44:25.122Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CountryController.cs",
+              "DocumentMoniker": "C:\\Users\\micha\\source\\repos\\Web API for Contacts 2.0\\Controllers\\CountryController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CountryController.cs",
+              "ToolTip": "C:\\Users\\micha\\source\\repos\\Web API for Contacts 2.0\\Controllers\\CountryController.cs",
+              "RelativeToolTip": "Controllers\\CountryController.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAgwCIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-06T15:39:07.623Z"
             }
           ]
         }

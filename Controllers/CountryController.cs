@@ -22,8 +22,19 @@ namespace Web_API_for_Contacts_2._0.Controllers
             return Ok(await _context.Country.ToListAsync());
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Country>> GetCountryById(int id)
+        {
+            var country = await _context.Country.FindAsync(id);
+
+            if (country == null)
+                return NotFound(new { message = $"There is no country with id {id}"});
+
+            return Ok(country);
+        }
+
         [HttpPost]
-        public async Task<ActionResult<Country>> CreateCountry([FromBody] CreateCountryDto newCountryDto)
+        public async Task<ActionResult> CreateCountry([FromBody] CreateCountryDto input)
         {
             if (!ModelState.IsValid)
             {
@@ -31,27 +42,27 @@ namespace Web_API_for_Contacts_2._0.Controllers
             }
 
             var existingCountry = await _context.Country
-                .FirstOrDefaultAsync(c => c.Name.ToLower() == newCountryDto.Name.ToLower());
+                .FirstOrDefaultAsync(c => c.Name.ToLower() == input.Name.ToLower());
 
             if (existingCountry != null)
             {
-                return Conflict(new { message = $"'{newCountryDto.Name}' already exists." });
+                return Conflict(new { message = $"'{input.Name}' already exists." });
             }
 
-            var newCountry = _mapper.Map<Country>(newCountryDto);
+            var newCountry = _mapper.Map<Country>(input);
 
             _context.Country.Add(newCountry);
             await _context.SaveChangesAsync();
 
-            return Ok(new { message = $"{newCountry.Name} added with id {newCountry.Id}." });
+            return CreatedAtAction(nameof(GetCountryById), new { id = newCountry.Id }, newCountry);
         }
 
         [HttpDelete]
         public async Task<IActionResult> DeleteCountry([FromBody] Country countryToDelete)
         {
-            if (countryToDelete == null || countryToDelete.Id == 0 || string.IsNullOrWhiteSpace(countryToDelete.Name))
+            if (!ModelState.IsValid)
             {
-                return BadRequest(new { message = "Invalid Id or Name." });
+                return BadRequest(ModelState);
             }
 
             var country = await _context.Country

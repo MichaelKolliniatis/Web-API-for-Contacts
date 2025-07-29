@@ -5,6 +5,7 @@ using AutoMapper;
 using Web_API_for_Contacts_2._0.Dtos;
 using Web_API_for_Contacts_2._0.Data;
 using Web_API_for_Contacts_2._0.Models;
+using AutoMapper.QueryableExtensions;
 
 namespace Web_API_for_Contacts_2._0.Controllers
 {
@@ -17,16 +18,20 @@ namespace Web_API_for_Contacts_2._0.Controllers
         private readonly IMapper _mapper = mapper;
 
         [HttpGet]
-        public async Task<ActionResult<List<PersonDto>>> GetPerson()
+        public async Task<ActionResult<List<PersonDto>>> GetPersons()
         {
-            var people = await _context.Person
+            var persons = await _context.Person
                 .Include(p => p.Country)
                 .Include(p => p.Profession)
                 .Include(p => p.PersonHobbies)
                     .ThenInclude(ph => ph.Hobby)
                 .ToListAsync();
+            //var persons = await _context.Person
+            //    .ProjectTo<PersonDto>(_mapper.ConfigurationProvider)
+            //    .ToListAsync();
 
-            var peopleDto = _mapper.Map<List<PersonDto>>(people);
+
+            var peopleDto = _mapper.Map<List<PersonDto>>(persons);
 
             return Ok(peopleDto);
         }
@@ -197,11 +202,6 @@ namespace Web_API_for_Contacts_2._0.Controllers
             if (person == null)
                 return NotFound(new { message = $"Person with id {id} not found." });
 
-            if (string.IsNullOrWhiteSpace(dto.FirstName) || string.IsNullOrWhiteSpace(dto.LastName))
-            {
-                return BadRequest(new { message = "First name and last are required." });
-            }
-
             Country? country = null;
             Profession? profession = null;
 
@@ -254,7 +254,6 @@ namespace Web_API_for_Contacts_2._0.Controllers
             }
 
             var person = await _context.Person
-                .Include(p => p.PersonHobbies)
                 .FirstOrDefaultAsync(p => p.Id == deleteDto.Id &&
                                           p.FirstName.ToLower() == deleteDto.FirstName.ToLower() &&
                                           p.LastName.ToLower() == deleteDto.LastName.ToLower());
@@ -264,7 +263,7 @@ namespace Web_API_for_Contacts_2._0.Controllers
                 return NotFound(new { message = $"No person found with Id {deleteDto.Id} and name {deleteDto.FirstName} {deleteDto.LastName}." });
             }
 
-            if (person.PersonHobbies != null && person.PersonHobbies.Any())
+            if (person.PersonHobbies.Any())
             {
                 _context.PersonHobby.RemoveRange(person.PersonHobbies);
             }

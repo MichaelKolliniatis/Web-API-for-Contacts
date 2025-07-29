@@ -21,8 +21,19 @@ namespace Web_API_for_Contacts_2._0.Controllers
             return Ok(await _context.Hobby.ToListAsync());
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Country>> GetHobbyById(int id)
+        {
+            var hobby = await _context.Hobby.FindAsync(id);
+
+            if (hobby == null)
+                return NotFound(new { message = $"There is no hobby with id {id}" });
+
+            return Ok(hobby);
+        }
+
         [HttpPost]
-        public async Task<ActionResult<Hobby>> CreateHobby([FromBody] CreateHobbyDto newHobbyDto)
+        public async Task<ActionResult> CreateHobby([FromBody] CreateHobbyDto newHobbyDto)
         {
             if (!ModelState.IsValid)
             {
@@ -42,15 +53,15 @@ namespace Web_API_for_Contacts_2._0.Controllers
             _context.Hobby.Add(newHobby);
             await _context.SaveChangesAsync();
 
-            return Ok(new { message = $"{newHobby.Name} added with id {newHobby.Id}." });
+            return CreatedAtAction(nameof(GetHobbyById), new {id = newHobby.Id}, newHobby);
         }
 
         [HttpDelete]
         public async Task<IActionResult> DeleteHobby([FromBody] Hobby hobbyToDelete)
         {
-            if (hobbyToDelete == null || hobbyToDelete.Id == 0 || string.IsNullOrWhiteSpace(hobbyToDelete.Name))
+            if (!ModelState.IsValid)
             {
-                return BadRequest(new { message = "Invalid Id or Name." });
+                return BadRequest(ModelState);
             }
 
             var hobby = await _context.Hobby
